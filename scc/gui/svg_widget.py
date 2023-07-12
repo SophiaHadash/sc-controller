@@ -49,6 +49,7 @@ class SVGWidget(Gtk.EventBox):
 		self.size_override = None
 		self.image_width = 1
 		self.image_height = 1
+		self.filename = filename
 		self.set_image(filename)
 		self.image = Gtk.Image()
 		if init_hilighted:
@@ -58,6 +59,7 @@ class SVGWidget(Gtk.EventBox):
 	
 	
 	def set_image(self, filename):
+		self.filename = filename
 		self.current_svg = open(filename, "r").read()
 		self.cache = OrderedDict()
 		self.areas = []
@@ -139,7 +141,7 @@ class SVGWidget(Gtk.EventBox):
 		a = self.get_area(area_id)
 		if a:
 			return a.x, a.y, a.w, a.h
-		raise ValueError("Area '%s' not found" % (area_id, ))
+		raise ValueError("Area '%s' not found in '%s'" % (area_id, self.filename))
 	
 	
 	@staticmethod

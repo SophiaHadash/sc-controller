@@ -348,7 +348,7 @@ class ControllerManager(GObject.GObject):
 	}
 	
 	DEFAULT_ICONS = [ "A", "B", "X", "Y", "BACK", "C", "START",
-		"LB", "RB", "LT", "RT", "STICK", "LPAD", "RPAD", "RGRIP", "LGRIP", "DOTS" ]
+		"LB", "RB", "LT", "RT", "STICK", "RSTICK", "LPAD", "RPAD", "RGRIP", "LGRIP", "DOTS" ]
 	# ^^ those are icon names
 	
 	def __init__(self, daemon_manager, controller_id, controller_type):

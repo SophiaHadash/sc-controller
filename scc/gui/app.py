@@ -136,10 +136,12 @@ class App(Gtk.Application, UserDataManager, BindingEditor):
 		self.rpad_test = Gtk.Image.new_from_file(os.path.join(self.imagepath, "test-cursor.svg"))
 		self.stick_test = Gtk.Image.new_from_file(os.path.join(self.imagepath, "test-cursor.svg"))
 		self.rstick_test = Gtk.Image.new_from_file(os.path.join(self.imagepath, "test-cursor.svg"))
+		self.dpad_test = Gtk.Image.new_from_file(os.path.join(self.imagepath, "test-cursor.svg"))
 		self.main_area.put(self.lpad_test, 40, 40)
 		self.main_area.put(self.rpad_test, 290, 90)
 		self.main_area.put(self.stick_test, 150, 40)
 		self.main_area.put(self.rstick_test, 290, 40)
+		self.main_area.put(self.dpad_test, 38, 78)
 
 		# OSD mode (if used)
 		if self.osd_mode:
@@ -1001,9 +1003,9 @@ class App(Gtk.Application, UserDataManager, BindingEditor):
 			if c:
 				c.unlock_all()
 				c.observe(DaemonManager.nocallback, self.on_observe_failed,
-					'A', 'B', 'C', 'X', 'Y', 'START', 'BACK', 'LB', 'RB',
-					'LPAD', 'RPAD', 'LGRIP', 'RGRIP', 'LT', 'RT', 'LEFT',
-					'RIGHT', 'STICK', 'STICKPRESS', 'RSTICK', 'RSTICKPRESS')
+					'A', 'B', 'C', 'X', 'Y', 'START', 'BACK', 'DOTS', 'LB', 'RB',
+					'LPAD', 'RPAD', 'LGRIP', 'LGRIP2', 'RGRIP', 'RGRIP2', 'LT', 'RT', 'LEFT',
+					'RIGHT', 'STICK', 'STICKPRESS', 'RSTICK', 'RSTICKPRESS', 'DPAD')
 				self.test_mode_controller = c
 	
 	
@@ -1139,6 +1141,26 @@ class App(Gtk.Application, UserDataManager, BindingEditor):
 			else:
 				self.hilights[App.OBSERVE_COLOR].remove(what)
 			self._update_background()
+		elif what == "DPAD":
+			if data[0] == 0 and data[1] == 0:
+				self.dpad_test.hide()
+			else:
+				pos_left   = [14, 78]
+				pos_right  = [62, 78]
+				pos_top    = [38, 54]
+				pos_bottom = [38, 102]
+
+				if data[0] < 0:
+					pos = pos_left
+				elif data[0] > 0:
+					pos = pos_right
+				elif data[1] < 0:
+					pos = pos_bottom
+				elif data[1] > 0:
+					pos = pos_top
+
+				self.main_area.move(self.dpad_test, pos[0], pos[1])
+				self.dpad_test.show()
 		elif hasattr(SCButtons, what):
 			try:
 				if data[0]:

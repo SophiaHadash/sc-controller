@@ -1099,7 +1099,7 @@ class SCCDaemon(Daemon):
 		Used when parsing `Lock: ...` message
 		"""
 		s = s.decode("utf-8").strip(" \t\r\n")
-		if s in (STICK, RSTICK, LEFT, RIGHT, CPAD):
+		if s in (STICK, RSTICK, LEFT, RIGHT, CPAD, DPAD):
 			return s
 		if s == "STICKPRESS":
 			# Special case, as that button is actually named STICK :(

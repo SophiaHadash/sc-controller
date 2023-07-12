@@ -17,6 +17,7 @@ appimage/
 *.cpp
 *.vdf
 .kateconfig
+*.kdev4
 
 dist/
 sccontroller.egg-info/

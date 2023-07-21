@@ -996,7 +996,7 @@ class App(Gtk.Application, UserDataManager, BindingEditor):
 			if self.test_mode_controller:
 				self.test_mode_controller.unlock_all()
 			try:
-				c = self.dm.get_controllers()[0]
+				c = self.profile_switchers[0].get_controller()
 			except IndexError:
 				# Zero controllers
 				return
@@ -1145,10 +1145,14 @@ class App(Gtk.Application, UserDataManager, BindingEditor):
 			if data[0] == 0 and data[1] == 0:
 				self.dpad_test.hide()
 			else:
-				pos_left   = [14, 78]
-				pos_right  = [62, 78]
-				pos_top    = [38, 54]
-				pos_bottom = [38, 102]
+				ax, ay, aw, ah = self.background.get_area_position("DPADTEST")
+				cw = self.dpad_test.get_allocation().width
+				ch = self.dpad_test.get_allocation().height
+
+				pos_left   = [ax              , ay + ah/2 - ch/2]
+				pos_right  = [ax + aw - cw    , ay + ah/2 - ch/2]
+				pos_top    = [ax + aw/2 - cw/2, ay]
+				pos_bottom = [ax + aw/2 - cw/2, ay + ah - ch]
 
 				if data[0] < 0:
 					pos = pos_left

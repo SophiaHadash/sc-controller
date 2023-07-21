@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8541646"
-     inkscape:cx="98.696738"
-     inkscape:cy="148.8541"
+     inkscape:zoom="7.4166584"
+     inkscape:cx="40.853978"
+     inkscape:cy="99.101234"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -812,5 +812,14 @@
        x="91.767929"
        y="46.830849"
        ry="0" />
+    <rect
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ed00b4;stroke-width:1.98131;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
+       id="AREA_DPADTEST"
+       width="72.434669"
+       height="72.718697"
+       x="13.901665"
+       y="53.790665"
+       ry="0"
+       inkscape:label="AREA_DPADTEST" />
   </g>
 </svg>

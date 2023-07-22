@@ -157,6 +157,8 @@ class ControllerImage(SVGWidget):
 		for i in range(len(ControllerImage.BUTTONS_WITH_IMAGES)):
 			b = nameof(ControllerImage.BUTTONS_WITH_IMAGES[i])
 			if b == "DOTS":
+				if self.current["gui"]["background"] != "deck":
+					continue
 				# How did I managed to create this kind of special case? -_-
 				i = 16
 			path = None
